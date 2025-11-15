@@ -6,15 +6,34 @@ using System.Threading.Tasks;
 
 namespace p511_oop
 {
+
+    class User
+    {
+        public string name;
+        public string surname;
+        public int age;
+        public string city;
+
+        public User(string name, string surname, int age, string city)
+        {
+            this.name = name;
+            this.surname = surname;
+            this.age = age;
+            this.city = city;
+        }
+
+        public void Print()
+        {
+            Console.WriteLine($"Name: {name}, Surname: {surname}, Age: {age}, City: {city}");
+        }
+    }
+
     internal class Program
     {
-        static int divide(int a, int b)
-        {
-            return a / b;
-        }
         static void Main(string[] args)
         {
-            divide(2, 2);
+            User user = new User("John", "Doe", 45, "Moscow");
+            user.Print();
         }
     }
 }
