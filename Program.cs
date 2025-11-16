@@ -7,16 +7,17 @@ using System.Threading.Tasks;
 namespace p511_oop
 {
 
-    class Student
+    class Rectangle
     {
-        public string name;
+        public double width;
+        public double height;
     }
 
     internal class Program
     {
         static void Main(string[] args)
         {
-            Student student = new Student();
+            Rectangle rectangle = new Rectangle();            
         }
     }
 }
