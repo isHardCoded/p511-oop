@@ -32,8 +32,7 @@ namespace p511_oop
     {
         static void Main(string[] args)
         {
-            User user = new User("John", "Doe", 45, "Moscow");
-            user.Print();
+            Rectangle rectangle = new Rectangle();            
         }
     }
 }
