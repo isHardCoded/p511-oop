@@ -10,11 +10,16 @@ namespace p511_oop
     {
         static void Main(string[] args)
         {
-            Student student = new Student("John", "Doe", "P511");
-            student.Print();
+            List<Passport> passports = new List<Passport>();
 
-            Aspirant aspirant = new Aspirant("Bob", "Doe", "P413", "Work 1");
-            aspirant.Print();
+            passports.Add(new Passport("John", "Doe", 1, 1));
+            passports.Add(new Passport("Bob", "Doe", 2, 2));
+            passports.Add(new Passport("Tom", "Doe", 3, 3));
+
+            foreach (Passport passport in passports)
+            {
+                Console.WriteLine(passport.Print());
+            }
         }
     }
 }
