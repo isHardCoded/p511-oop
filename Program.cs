@@ -10,15 +10,21 @@ namespace p511_oop
     {
         static void Main(string[] args)
         {
-            List<Passport> passports = new List<Passport>();
-
-            passports.Add(new Passport("John", "Doe", 1, 1));
-            passports.Add(new Passport("Bob", "Doe", 2, 2));
-            passports.Add(new Passport("Tom", "Doe", 3, 3));
-
-            foreach (Passport passport in passports)
+            List<Transport> transports = new List<Transport>()
             {
-                Console.WriteLine(passport.Print());
+                new Car(),
+                new Bicycle(),
+                new Cart()
+            };
+
+            double distance = 100;
+            int passengers = 2;
+            double cargo = 0.3;
+
+            foreach (Transport transport in transports)
+            {
+                Console.WriteLine($"Время: {transport.CalculateTime(distance)}");
+                Console.WriteLine($"Стоимость: {transport.CalculateCost(distance, passengers, cargo)}");
             }
         }
     }
