@@ -10,21 +10,17 @@ namespace p511_oop
     {
         static void Main(string[] args)
         {
-            List<Transport> transports = new List<Transport>()
+            List<Figure> figures = new List<Figure>()
             {
-                new Car(),
-                new Bicycle(),
-                new Cart()
+                new Rectangle(2, 2),
+                new Circle(2),
+                new Triangle(2, 3),
+                new Trapezoid(2, 4, 5)
             };
 
-            double distance = 100;
-            int passengers = 2;
-            double cargo = 0.3;
-
-            foreach (Transport transport in transports)
+            foreach (Figure f in figures)
             {
-                Console.WriteLine($"Время: {transport.CalculateTime(distance)}");
-                Console.WriteLine($"Стоимость: {transport.CalculateCost(distance, passengers, cargo)}");
+                Console.WriteLine(f.GetArea());
             }
         }
     }
