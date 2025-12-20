@@ -8,56 +8,35 @@ using System.IO;
 
 namespace p511_oop
 {
+    public class Person
+    {
+        public string Name { get; set; }
+        public int Age { get; set; }
 
+        public Person(string name, int age)
+        {
+            Name = name;
+            Age = age;
+        }
+
+        public override string ToString()
+        {
+            return $"{Name} - {Age}";
+        }
+    }
 
     internal class Program
     {
         static void Main(string[] args)
         {
-            StreamReader streamReader = null;
+            Person person = new Person("John", 25);
+
 
             string filePath = @"C:\Users\User\Desktop\data.txt";
 
-            try
+            using (StreamWriter writer = new StreamWriter(filePath))
             {
-                using (StreamWriter streamWriter = new StreamWriter(filePath))
-                {
-                    streamWriter.WriteLine("Hello!");
-                    streamWriter.WriteLine("C#");
-
-                    Console.WriteLine("Данные успешно записаны");
-                }                    
-            }
-            catch (UnauthorizedAccessException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            catch (FileNotFoundException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            catch (IOException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Неизвестная ошибка");
-            }
-        
-            try
-            {
-                using (streamReader = new StreamReader(filePath))
-                {
-                    string line;
-                    while ((line = streamReader.ReadLine()) != null)
-                    {
-                        Console.WriteLine(line);
-                    }
-                }        
-            } catch (Exception ex)
-            {
-                Console.WriteLine("Неизвестная ошибка");
+                writer.WriteLine(person.ToString());
             }
         }
     }
