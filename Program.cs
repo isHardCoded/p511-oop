@@ -14,17 +14,68 @@ namespace p511_oop
     {
         static void Main(string[] args)
         {
+            StreamWriter streamWriter = null;
+            StreamReader streamReader = null;
+
             try
             {
-                File.AppendAllText("data.txt", "\nHello World!");
-                string text = File.ReadAllText("data.txt");
-                Console.WriteLine(text);
-            } catch(UnauthorizedAccessException ex) {
-                Console.WriteLine("Нет прав на открытие файл");
+                streamWriter = new StreamWriter(
+                        @"C:\Users\User\Desktop\data.txt",
+                        append: false,
+                        encoding: Encoding.UTF8
+                );
+
+                streamWriter.WriteLine("Hello!");
+                streamWriter.WriteLine("C#");
+
+                Console.WriteLine("Данные успешно записаны");
             }
-            foreach (Figure f in figures)
+            catch (UnauthorizedAccessException ex)
             {
-                Console.WriteLine(f.GetArea());
+                Console.WriteLine(ex.Message);
+            }
+            catch (FileNotFoundException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            catch (IOException ex)
+            {
+                Console.WriteLine(ex.Message);
+            } 
+            catch (Exception ex)
+            {
+                Console.WriteLine("Неизвестная ошибка");
+            }
+
+            finally
+            {
+                if (streamWriter != null)
+                {
+                    streamWriter.Close();
+                }
+            }
+        
+            try
+            {
+                streamReader = new StreamReader(
+                        @"C:\Users\User\Desktop\data.txt",
+                        encoding: Encoding.UTF8
+                );
+
+                string line;
+                while ((line = streamReader.ReadLine()) != null)
+                {
+                    Console.WriteLine(line);
+                }
+            } catch (Exception ex)
+            {
+                Console.WriteLine("Неизвестная ошибка");
+            } finally
+            {
+                if (streamReader != null)
+                {
+                    streamReader.Close();
+                }
             }
         }
     }
