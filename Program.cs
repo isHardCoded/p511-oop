@@ -13,10 +13,18 @@ namespace p511_oop
     {
         static void Main(string[] args)
         {
-            Person person = new Person("Tom", 25);
-            ObjectToTxt save = new ObjectToTxt();
+            const string FILE_PATH = @"C:\Users\User\Desktop\data.txt";
             
-            save.SaveObject(person);         
+            StudentManager studentManager = new StudentManager();
+
+            studentManager.AddStudent(new Student("John", 20, 4.5));
+
+            studentManager.PrintAllStudents();
+
+            studentManager.SaveToFile(FILE_PATH);
+            studentManager.LoadFromFile(FILE_PATH);
+
+            // Реализация меню в с помощью конструкции switch()
         }
     }
 }
