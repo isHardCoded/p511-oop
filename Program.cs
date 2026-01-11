@@ -4,30 +4,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.Json;
+using System.Net.Http;
 
 namespace p511_oop
 {
-    public class Person
-    {
-        public string Name { get; set; }
-        public int Age { get; set; }
-    }
-
     internal class Program
     {
         static void Main(string[] args)
         {
-            Person person = new Person
-            {
-                Name = "John",
-                Age = 30
-            };
+            const string URL = "https://jsonplaceholder.org/posts";
 
-            string json = JsonSerializer.Serialize(person);
-            Console.WriteLine(json);
+            HttpClient client = new HttpClient();
 
-            Person deserialized = JsonSerializer.Deserialize<Person>(json);
-            
-        }
+            client.BaseAddress = new Uri(URL);
+
+            var response = client.GetAsync(URL);
+
+            Console.WriteLine(response.Result);
+        }   
     }
 }
